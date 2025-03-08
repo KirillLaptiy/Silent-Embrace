@@ -1,4 +1,3 @@
-
 -- Client Tables:
 
 HuggyClient = {}
@@ -8,7 +7,8 @@ local modID = "Huggies"
 
 local createHuggyContext = ISWorldObjectContextMenu.createMenu
 
-ISWorldObjectContextMenu.createMenu = function (player, worldobjects, x, y, test)
+---@diagnostic disable-next-line: duplicate-set-field
+ISWorldObjectContextMenu.createMenu = function(player, worldobjects, x, y, test)
     local context = createHuggyContext(player, worldobjects, x, y, test)
 
     local playerObj = getSpecificPlayer(player)
@@ -23,7 +23,8 @@ ISWorldObjectContextMenu.createMenu = function (player, worldobjects, x, y, test
             receiverName = clickedPlayer:getDisplayName(),
         }
 
-        local option = context:addOption(getText("ContextMenu_Huggy" .. " " .. playersArgs.receiverName), context, HuggyClient.isReceiverBusy, playersArgs, playerObj, clickedPlayer)
+        local option = context:addOption(getText("ContextMenu_Huggy" .. " " .. playersArgs.receiverName), context,
+            HuggyClient.isReceiverBusy, playersArgs, playerObj, clickedPlayer)
 
         if math.abs(playerObj:getX() - clickedPlayer:getX()) > 3 or math.abs(playerObj:getY() - clickedPlayer:getY()) > 3 then
             option.notAvailable = true
@@ -45,13 +46,13 @@ ISWorldObjectContextMenu.createMenu = function (player, worldobjects, x, y, test
     return context
 end
 
-HuggyClient.isReceiverBusy = function (context, playersArgs, sender, receiver)
+HuggyClient.isReceiverBusy = function(context, playersArgs, sender, receiver)
     if math.abs(sender:getX() - receiver:getX()) > 3 or math.abs(sender:getY() - receiver:getY()) > 3 then
         return
     end
 
     if receiver:isSitOnGround() then
-        getPlayer():SayShout(getText(receiver:getDisplayName() .. ", " ..  "Please stand, I want to huggy you"))
+        getPlayer():SayShout(getText(receiver:getDisplayName() .. ", " .. "Please stand, I want to huggy you"))
         return
     end
 
