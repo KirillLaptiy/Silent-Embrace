@@ -1,6 +1,4 @@
-
 local clearHuggyBusy = {}
-local modID = "Huggies"
 
 clearHuggyBusy.awaitClientCommandAbility = function()
     clearHuggyBusy.waitTicks = (clearHuggyBusy.waitTicks and (clearHuggyBusy.waitTicks - 1)) or 5
@@ -15,7 +13,8 @@ clearHuggyBusy.awaitClientCommandAbility = function()
             local player = getSpecificPlayer(playerIndex)
 
             if player then
-                sendClientCommand(modID, "clearBusyOnServer", {playerName = player:getDisplayName()})
+                sendClientCommand(SilentEmbrace.ModID, SilentEmbrace.Commands.clearBusy,
+                    { playerName = player:getDisplayName() })
             end
         end
     end

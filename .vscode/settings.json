@@ -21,5 +21,8 @@
     "git.ignoreLimitWarning": true,
     "Lua.diagnostics.globals": [
         "clickedPlayer"
+    ],
+    "Lua.diagnostics.disable": [
+        "duplicate-set-field"
     ]
 }
