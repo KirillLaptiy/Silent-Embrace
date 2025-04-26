@@ -1,5 +1,14 @@
--- Sending huggy Requests
+--[[
+*
+*              ^_^         Y U M M Y         ^_^
+*
+*                 ~ Deliciously Made by YUMMY ~
+*
+*                          :3  :3  :3
+*
+]]
 
+-- Sending huggy Requests
 SilentEmbraceServer.sendRequest = function(playersArgs)
     local sender = getPlayerByOnlineID(playersArgs.senderID)
     local receiver = getPlayerByOnlineID(playersArgs.receiverID)
@@ -13,7 +22,7 @@ SilentEmbraceServer.sendRequest = function(playersArgs)
         sendServerCommand(
             sender,
             SilentEmbrace.ModID,
-            SilentEmbrace.Commands.cancelRequest,
+            SilentEmbrace.Commands.declineRequest,
             { isBusy = true }
         )
     else
@@ -40,8 +49,14 @@ end
 SilentEmbraceServer.declineRequest = function(playersArgs)
     SilentEmbraceServer.BusyPlayers[playersArgs.receiverName] = false
 
-    sendServerCommand(getPlayerByOnlineID(playersArgs.senderID), SilentEmbrace.ModID,
-        SilentEmbrace.Commands.declineRequest, {})
+    local sender = getPlayerByOnlineID(playersArgs.senderID)
+
+    sendServerCommand(
+        sender,
+        SilentEmbrace.ModID,
+        SilentEmbrace.Commands.declineRequest,
+        { isBusy = false }
+    )
 end
 
 -- Button YES
@@ -67,8 +82,8 @@ end
 
 -- Clear Busy
 
-SilentEmbraceServer.clearBusy = function(playerName)
-    SilentEmbraceServer.BusyPlayers[playerName] = false
+SilentEmbraceServer.clearBusy = function(args)
+    SilentEmbraceServer.BusyPlayers[args.playerName] = false
 end
 
 SilentEmbraceServer.clearAll = function(playersArgs)
@@ -79,10 +94,24 @@ SilentEmbraceServer.clearAll = function(playersArgs)
     SilentEmbraceServer.BusyPlayers[playersArgs.receiverName] = false
 
     sendServerCommand(sender, SilentEmbrace.ModID,
-        SilentEmbrace.Commands.clearBusy, {})
+        SilentEmbrace.Commands.cancelRequest, {})
 
     sendServerCommand(receiver, SilentEmbrace.ModID,
-        SilentEmbrace.Commands.clearBusy, {})
+        SilentEmbrace.Commands.cancelRequest, {})
+end
+
+SilentEmbraceServer.clearEmbrace = function(playersArgs)
+    local sender = getPlayerByOnlineID(playersArgs.senderID)
+    local receiver = getPlayerByOnlineID(playersArgs.receiverID)
+
+    SilentEmbraceServer.BusyPlayers[playersArgs.senderName] = false
+    SilentEmbraceServer.BusyPlayers[playersArgs.receiverName] = false
+
+    sendServerCommand(sender, SilentEmbrace.ModID,
+        SilentEmbrace.Commands.clearEmbrace, {})
+
+    sendServerCommand(receiver, SilentEmbrace.ModID,
+        SilentEmbrace.Commands.clearEmbrace, {})
 end
 
 Events.OnClientCommand.Add(function(module, command, player, args)

@@ -1,0 +1,6 @@
+ContextMenu_RU = {
+	ContextMenu_Embrace = "Обнять",
+	ContextMenu_Embrace_get_up = "Встань, пожалуйста, я хочу тебя обнять",
+	ContextMenu_Embrace_YouNeedToBeCloser = "Нужно подойти ближе",
+	ContextMenu_YouNeedToStand = "Нужно встать",
+}

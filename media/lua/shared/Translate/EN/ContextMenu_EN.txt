@@ -1,0 +1,6 @@
+ContextMenu_EN = {
+	ContextMenu_Embrace = "Embrace",
+	ContextMenu_Embrace_get_up = "Please stand, I want to embrace you",
+	ContextMenu_Embrace_YouNeedToBeCloser = "You need to be closer",
+	ContextMenu_YouNeedToStand = "You need to stand",
+}

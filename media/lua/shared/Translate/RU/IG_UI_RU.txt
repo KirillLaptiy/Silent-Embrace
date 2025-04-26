@@ -1,0 +1,6 @@
+IG_UI_RU = {
+	IGUI_Embrace_sended = "ќбъ€тие отправлено: ",
+	IGUI_Embrace_received = "ќбъ€тие получено от: ",
+	IGUI_Embrace_declined = "“вой запрос на объ€тие был отклонЄн :(",
+	IGUI_Embrace_busy = "»грок сейчас зан€т :(",
+}

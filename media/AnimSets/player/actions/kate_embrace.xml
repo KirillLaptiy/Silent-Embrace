@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animNode>
+    <m_Name>kate_embrace</m_Name>
+    <m_AnimName>Kate_Embrace</m_AnimName>
+    <m_deferredBoneAxis>Y</m_deferredBoneAxis>
+    <m_Looped>true</m_Looped>
+    <m_SpeedScale>0.10</m_SpeedScale>
+    <m_BlendTime>0.95</m_BlendTime>
+    <m_SubStateBoneWeights>
+        <boneName>Bip01</boneName>
+        <weight>1.00</weight>
+    </m_SubStateBoneWeights>
+    <m_Conditions>
+        <m_Name>PerformingAction</m_Name>
+        <m_Type>STRING</m_Type>
+        <m_StringValue>kate_embrace</m_StringValue>
+    </m_Conditions>
+</animNode>

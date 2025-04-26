@@ -1,3 +1,13 @@
+--[[
+*
+*              ^_^         Y U M M Y         ^_^
+*
+*                 ~ Deliciously Made by YUMMY ~
+*
+*                          :3  :3  :3
+*
+]]
+
 -- When click on dialog button
 function SilentEmbraceClient:onButtonClick(button)
     if button.internal == "NO" then
@@ -21,7 +31,7 @@ function SilentEmbraceClient:onButtonClick(button)
         SilentEmbraceClient.isBusy = false
 
         sendClientCommand(SilentEmbrace.ModID, SilentEmbrace.Commands.clearBusy,
-            { playerName = SilentEmbraceClient.EmbracePlayers.senderName })
+            { playerName = getPlayer():getDisplayName() })
     end
 end
 
@@ -48,12 +58,11 @@ local createModalDialog = function(label, isSelectButtons)
     return modalDialog
 end
 
--- Modal dialogs
 -- Sender dialog
 SilentEmbraceClient.ModalDialogs.senderDialog = function()
     local modalDialog = createModalDialog(
-        getText("IGUI_HuggyUI_SentHuggyRequest to:" ..
-            " " .. SilentEmbraceClient.EmbracePlayers.receiverName),
+        getText("IGUI_Embrace_sended") ..
+        " " .. SilentEmbraceClient.EmbracePlayers.receiverName,
         false
     )
 
@@ -78,48 +87,19 @@ end
 
 -- Receiver dialog
 SilentEmbraceClient.ModalDialogs.receiverDialog = function()
-    createModalDialog(getText("IGUI_HuggyUI_HuggyRequest by:" .. " " .. SilentEmbraceClient.EmbracePlayers.senderName),
+    createModalDialog(getText("IGUI_Embrace_received") .. " " .. SilentEmbraceClient.EmbracePlayers.senderName,
         true)
 end
 
 -- Declined dialog
-SilentEmbraceClient.ModalDialogs.declinedDialog = function()
+SilentEmbraceClient.ModalDialogs.declinedDialog = function(isBusy)
     if (SilentEmbraceClient.dialog) then
         SilentEmbraceClient.dialog:removeFromUIManager()
     end
 
-    createModalDialog(getText("IGUI_HuggyUI_NowannaHuggy"), false)
+    local dialogText = "IGUI_Embrace_declined"
+
+    if isBusy then dialogText = "IGUI_Embrace_busy" end
+
+    createModalDialog(getText(dialogText), false)
 end
-
--- SilentEmbraceClient.onAcceptedHuggyRequestSender = function()
---     modalDialog:removeFromUIManager()
--- end
-
--- SilentEmbraceClient.onCanceledHuggyRequestClient = function()
---     modalDialog:removeFromUIManager()
---     SilentEmbraceClient.isBusy = false
---     Events.OnTick.Remove(SilentEmbraceClient.playersInGameCheck)
--- end
-
--- -- Receiving a message when trying to send a Huggy request to a player, who currently has a Huggy request
-
--- SilentEmbraceClient.onReceivedAnotherHuggyRequest = function()
---     -- modal = ISModalDialog:new(getCore():getScreenWidth() / 2 - 175, getCore():getScreenHeight() / 2 - 75, 350, 150,
---     --     getText("IGUI_HuggyUI_ThisPlayerReceivedAnotherHuggyRequest"), nil, true,
---     --     SilentEmbraceClient.onAnswerHuggyRequest);
---     modalDialog:initialise()
---     modalDialog:addToUIManager()
---     SilentEmbraceClient.isBusy = true
--- end
-
--- -- Clearing client huggy busy
-
--- SilentEmbraceClient.clearBusyAfterHuggyActionClient = function()
---     if modalDialog then
---         modalDialog:removeFromUIManager()
---     end
-
---     ISTimedActionQueue.clear(getPlayer())
---     SilentEmbraceClient.isBusy = false
---     Events.OnTick.Remove(SilentEmbraceClient.playersInGameCheck)
--- end

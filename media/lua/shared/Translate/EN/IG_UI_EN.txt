@@ -1,0 +1,6 @@
+IG_UI_EN = {
+	IGUI_Embrace_sended = "Embrace sended to:",
+	IGUI_Embrace_received = "Embrace received by:",
+	IGUI_Embrace_declined = "Your embrace request has been rejected :(",
+	IGUI_Embrace_busy = "Player is now busy :(",
+}

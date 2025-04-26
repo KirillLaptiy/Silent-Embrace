@@ -2,7 +2,7 @@
     "Lua.workspace.library": [
         "c:\\Users\\kiric\\.vscode\\extensions\\ilka.umbrella-vscode-1.0.1\\plugin\\library\\runtime",
         "c:\\Users\\kiric\\.vscode\\extensions\\ilka.umbrella-vscode-1.0.1\\plugin\\library\\natives\\umbrella",
-        "C:/Users/kiric/AppData/Roaming/Code/User/globalStorage/sumneko.lua/addonManager/addons/umbrella/module/library"
+        "${addons}/umbrella/module/library"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.path": [
@@ -12,11 +12,6 @@
     ],
     "Lua.completion.requireSeparator": "/",
     "Lua.workspace.preloadFileSize": 800,
-    "Lua.runtime.builtin": {
-        "debug": "disable",
-        "io": "disable",
-        "package": "disable"
-    },
     "Lua.workspace.checkThirdParty": false,
     "git.ignoreLimitWarning": true,
     "Lua.diagnostics.globals": [
@@ -24,5 +19,10 @@
     ],
     "Lua.diagnostics.disable": [
         "duplicate-set-field"
-    ]
+    ],
+    "Lua.runtime.builtin": {
+        "debug": "disable",
+        "io": "disable",
+        "package": "disable"
+    }
 }

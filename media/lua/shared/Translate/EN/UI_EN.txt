@@ -1,0 +1,7 @@
+UI_EN = {
+	UI_trait_Heartbreaker = "Heartbreaker",
+	UI_trait_HeartbreakerDesc = "Breaks hearts, but is forever alone...",
+	UI_trait_TenderHeart = "TenderHeart",
+	UI_trait_TenderHeartDesc = "A gentle soul, craving closeness in a broken world.",
+	UI_Cancel = "Cancel",
+}

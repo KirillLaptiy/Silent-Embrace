@@ -1,0 +1,7 @@
+UI_RU = {
+	UI_trait_Heartbreaker = "Сердцеед",
+	UI_trait_HeartbreakerDesc = "Разбивает сердца, но навеки одинок...",
+	UI_trait_TenderHeart = "Нежное Сердце",
+	UI_trait_TenderHeartDesc = "Тонкая душа, жаждущая близости в разрушенном мире.",
+	UI_Cancel = "Отмена",
+}

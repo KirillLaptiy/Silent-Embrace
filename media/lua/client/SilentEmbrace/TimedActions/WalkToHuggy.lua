@@ -1,10 +1,19 @@
+--[[
+*
+*              ^_^         Y U M M Y         ^_^
+*
+*                 ~ Deliciously Made by YUMMY ~
+*
+*                          :3  :3  :3
+*
+]]
 
 require "TimedActions/ISBaseTimedAction"
 
 ISWalkToHuggy = ISBaseTimedAction:derive("ISWalkToHuggy");
 
 function ISWalkToHuggy:isValid()
-	if self.character:getVehicle() then return false end
+    if self.character:getVehicle() then return false end
     return getGameSpeed() <= 2;
 end
 
@@ -17,10 +26,10 @@ function ISWalkToHuggy:update()
     end
 
     if self.additionalTest ~= nil then
-       if self.additionalTest(self.additionalContext) then
-			self:forceComplete();
+        if self.additionalTest(self.additionalContext) then
+            self:forceComplete();
             return
-       end
+        end
     end
     if self.result == BehaviorResult.Succeeded then
         self:forceComplete();
@@ -33,12 +42,12 @@ end
 
 function ISWalkToHuggy:stop()
     ISBaseTimedAction.stop(self);
-	self.character:getPathFindBehavior2():cancel()
+    self.character:getPathFindBehavior2():cancel()
     self.character:setPath2(nil);
 end
 
 function ISWalkToHuggy:perform()
-	self.character:getPathFindBehavior2():cancel()
+    self.character:getPathFindBehavior2():cancel()
     self.character:setPath2(nil);
 
     ISBaseTimedAction.perform(self);
@@ -54,7 +63,7 @@ function ISWalkToHuggy:setOnComplete(func, arg1, arg2, arg3, arg4)
     self.onCompleteArgs = { arg1, arg2, arg3, arg4 }
 end
 
-function ISWalkToHuggy:new (character, location, additionalTest, additionalContext)
+function ISWalkToHuggy:new(character, location, additionalTest, additionalContext)
     local o = {}
     setmetatable(o, self)
     self.__index = self
